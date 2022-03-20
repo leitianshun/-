@@ -6,50 +6,86 @@ import {px} from '../shared/px';
 export const Chart4 = () => {
   const divRef = useRef(null);
   useEffect(() => {
-    var myChart = echarts.init(divRef.current);
-    myChart.setOption(createEchartsOptions({
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24],
-        splitLine: {show: true, lineStyle: {color: '#073E78'}},
-        axisTick: {show: false},
-        axisLine: {show: false},
-      },
-      yAxis: {
-        type: 'value',
-        splitLine: {lineStyle: {color: '#073E78'}},
-        axisLabel: {
-          formatter(val) {
-            return val * 100 + '%';
+    //  var chartDom = document.getElementById('main');
+var myChart = echarts.init(divRef.current);
+var option;
+
+      const data = [];
+      for (let i = 0; i < 5; ++i) {
+        data.push(Math.round(Math.random() * 200));
+      }
+      option = {
+        xAxis: {
+         // max: 'dataMax'
+         splitLine: {show: false},
+       //  axisLabel: {show: false}
+     
+      
+        },
+        grid: {
+          x: px(60),
+          x2: px(10),
+          y: px(30),
+          y2: px(40),
+ 
+        },
+        yAxis: {
+          type: 'category',
+          data: ['8:00','9:00','10:00','11:00','12:00','13:00','19:00','17:00','18:00','20:00','21:00','16:00'],
+          inverse: true,
+          animationDuration: 300,
+          animationDurationUpdate: 300,
+          max: 2 // only the largest 3 bars will be displayed
+        },
+        series: [
+          {
+            realtimeSort: true,
+            name: '案发时段分析',
+            type: 'bar',
+            data: data,
+            label: {
+              show: true,
+              position: 'right',
+              valueAnimation: true
+            }
+          }
+        ],
+        legend: {
+          show: true
+        },
+        animationDuration: 3,
+        animationDurationUpdate: 3000,
+        animationEasing: 'linear',
+        animationEasingUpdate: 'linear'
+      };
+      function run() {
+        for (var i = 0; i < data.length; ++i) {
+          if (Math.random() > 0.9) {
+            data[i] += Math.round(Math.random() * 1000);
+          } else {
+            data[i] += Math.round(Math.random() * 200);
           }
         }
-      },
-      series: [{
-        type: 'line',
-        data: [
-          0.15, 0.13, 0.11,
-          0.13, 0.14, 0.15,
-          0.16, 0.18, 0.21,
-          0.19, 0.17, 0.16,
-          0.15
-        ],
-        symbol: 'circle',
-        symbolSize: px(12),
-        lineStyle: {width: px(2)},
-        areaStyle: {
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-            offset: 0,
-            color: '#414a9f'
-          }, {
-            offset: 1,
-            color: '#1b1d52'
-          }]),
-        }
-      }]
-    }));
-  }, []);
+        myChart.setOption({
+          series: [
+            {
+              type: 'bar',
+              data
+            }
+            
+          ]
+        });
+      }
+      setTimeout(function () {
+        run();
+      }, 0);
+      setInterval(function () {
+        run();
+      }, 1000);
+      
+      option && myChart.setOption(option); 
 
+  },[])
   return (
     <div className="bordered 案发时段">
       <h2>案发时段分析</h2>

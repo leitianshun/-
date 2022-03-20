@@ -11,10 +11,22 @@
   background: #010310; color: white;
   font-size: px(16);
   > header {
+    display: flex;
     height: px(99);
     background-size: cover;
     width: px(2420);
     margin: 0 auto;
+    justify-content: center;
+     border: 1px solid #0f3362;
+     background:#173a68 ;
+     align-items: center;
+     font-size:px(40);
+     color: #bad8fd;
+     > a {margin-top:3px;
+      position: fixed;
+      left: 150px;
+      top: 15px;
+      }
   }
   > footer {
     height: px(68);
@@ -91,7 +103,9 @@
         height: px(317);
       }
       > .row3 {
+    
         height: px(455);
+      
       }
     }
     .管辖统计, .破获排名, .发案趋势, .案发时段, .战果, .籍贯, .年龄段, .案发类型, .案发街道, .作案手段 {
@@ -130,13 +144,13 @@
     }
     .年龄段 {display: flex;flex-direction: column;
       height: px(363);
-      > .charts {
-        padding: px(30);
-      }
-      &-图1, &-图2, &-图3 {
+      // > .charts {
+      //   // padding: px(30);
+      // }
+      &-图1 {
         flex: 1;display: flex; flex-direction: column;
       }
-      &-图1, &-图2 {
+      &-图1 {
         .legend { @extend %legend;
           .male {background: #33a4fa;}
           .female {background: #8d70f8;}
@@ -149,16 +163,16 @@
             color: #33a4fa; font-size: px(40); text-shadow: 0 0 px(20) #33a4fa;font-weight: bold;}
         }
       }
-      &-图2 {
-        width: px(290); flex-shrink: 0;
-        .legend {
-          justify-content: flex-start;
-        }
-      }
-      &-图3 {
-        border: 1px solid #08397d;
-        h3 {font-size: px(20); color: #7ab6db; margin-top: px(6);}
-      }
+      // &-图2 {
+      //   width: px(290); flex-shrink: 0;
+      //   .legend {
+      //     justify-content: flex-start;
+      //   }
+      // }
+      // &-图3 {
+      //   border: 1px solid #08397d;
+      //   h3 {font-size: px(20); color: #7ab6db; margin-top: px(6);}
+      // }
     }
     .籍贯 {
       height: px(753); background: transparent;
@@ -191,7 +205,7 @@
       padding: 0 px(24);
       > table {
         width: 100%; table-layout: fixed;
-        margin-top: px(25);
+        margin-top: px(20);
         border-collapse: collapse;
         th, td {
           border: 1px solid #1a3671;

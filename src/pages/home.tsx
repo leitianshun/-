@@ -8,8 +8,6 @@ import {Chart4} from '../components/chart-4';
 import {Chart5} from '../components/chart-5';
 import {Chart6} from '../components/chart-6';
 import {Chart7} from '../components/chart-7';
-import {Chart8} from '../components/chart-8';
-import {Chart9} from '../components/chart-9';
 import {Chart10} from '../components/chart-10';
 import {Chart11} from '../components/chart-11';
 import {Chart12} from '../components/chart-12';
@@ -20,7 +18,8 @@ export const Home = () => {
   const year = new Date().getFullYear();
   return (
     <div className="home">
-      <header style={{backgroundImage: `url(${headerBg})`}}/>
+   
+      <header>     <a />    国家公安局合成作战平台  </header>
       <main>
         <section className="section1">
           <Chart1/>
@@ -39,8 +38,7 @@ export const Home = () => {
             <h2>犯罪人员年龄段分布</h2>
             <div className="charts">
               <Chart7/>
-              <Chart8/>
-              <Chart9/>
+             
             </div>
           </div>
         </section>
@@ -66,7 +64,7 @@ export const Home = () => {
         </section>
       </main>
       <footer>
-        &copy; 饥人谷 2020-{year}
+        &copy; 大屏数据采用大数据技术采集犯罪作案信息是一套实时监控的数据系统 
       </footer>
     </div>
   );
